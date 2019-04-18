@@ -3,6 +3,7 @@ import {
   Image,
   Platform,
   ScrollView,
+  FlatList,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -10,12 +11,28 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { VictoryChart, VictoryLine, VictoryTheme } from 'victory-native';
 import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+  constructor() {
+    super();
+    this.state = {
+      dataSource: {},
+    };
+  }
+  componentDidMount() {
+    var that = this;
+    let items = Array.apply(null, Array(60)).map((v, i) => {
+      return { id: i, src: 'http://placehold.it/200x200?text=' + (i + 1) };
+    });
+    that.setState({
+      dataSource: items,
+    });
+  }
 
   render() {
     return (
@@ -29,12 +46,41 @@ export default class HomeScreen extends React.Component {
             <Text>9˚/16˚</Text>
           </View>
         </View>
-        <View style={styles.weekendWeatherContainer}>
-          <Text>Weekend Here</Text>
+        <ScrollView style={styles.weekendWeatherContainer} horizontal>
+          <VictoryChart
+            theme={VictoryTheme.material}
+          >
+            <VictoryLine
+              style={{
+                data: { stroke: "#c43a31" },
+                parent: { border: "1px solid #ccc"}
+              }}
+              data={[
+                { x: 1, y: 2 },
+                { x: 2, y: 3 },
+                { x: 3, y: 5 },
+                { x: 4, y: 4 },
+                { x: 5, y: 7 }
+              ]}
+            />
+          </VictoryChart>
+        </ScrollView>
+        <View style={styles.fineDustContainer}>
+          <Text style={styles.title}>미세먼지 나쁨!</Text>
+          <Text style={styles.subtitle}>코로 숨을 못쉬어요</Text>
         </View>
-        <View style={styles.contentContainer}>
-          <Text style={styles.title}>So Sunny</Text>
-          <Text style={styles.subtitle}>It hurts my eyes!</Text>
+        <View style={styles.weatherLookContainer}>
+          <FlatList
+            data={this.state.dataSource}
+            renderItem={({ item }) => (
+              <View style={{ flex: 1, flexDirection: 'column', margin: 1 }}>
+                <Image style={styles.imageThumbnail} source={{ uri: item.src }} />
+                <Text>{item.id}</Text>
+              </View>
+            )}
+            numColumns={2}
+            keyExtractor={(item, index) => index}
+          />
         </View>
       </ScrollView>
     );
@@ -64,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: '#fff'
   },
-  contentContainer: {
+  fineDustContainer: {
     flex: 2,
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
@@ -78,5 +124,13 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 24,
     color: '#fff'
-  }
+  },
+  weatherLookContainer: {
+    flex: 1
+  },
+  imageThumbnail: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+  },
 });
