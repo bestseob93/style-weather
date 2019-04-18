@@ -21,8 +21,16 @@ export default class HomeScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.headerContainer}>
-          <MaterialCommunityIcons size={48} name="weather-sunny" color={'#fff'} />
-          <Text style={styles.tempText}>Temperature˚</Text>
+          <View style={styles.todayWeatherContainer}>
+            <MaterialCommunityIcons size={54} name="weather-sunny" color={'#fff'} />
+            <Text style={styles.tempText}>30˚</Text>
+          </View>
+          <View>
+            <Text>9˚/16˚</Text>
+          </View>
+        </View>
+        <View style={styles.weekendWeatherContainer}>
+          <Text>Weekend Here</Text>
         </View>
         <View style={styles.contentContainer}>
           <Text style={styles.title}>So Sunny</Text>
@@ -36,15 +44,24 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 30,
     backgroundColor: '#f7b733',
   },
   headerContainer: {
     flex: 1,
+    alignItems: 'center'
+  },
+  todayWeatherContainer: {
+    flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
   },
+  weekendWeatherContainer: {
+    flex: 1
+  },
   tempText: {
-    fontSize: 48,
+    fontSize: 24,
     color: '#fff'
   },
   contentContainer: {
