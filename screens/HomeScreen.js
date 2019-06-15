@@ -24,6 +24,7 @@ export default class HomeScreen extends React.Component {
       dataSource: {},
     };
   }
+
   componentDidMount() {
     var that = this;
     let items = Array.apply(null, Array(60)).map((v, i) => {
