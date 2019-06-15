@@ -1,7 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
+
 function AppHeader() {
-  return ()
+  return (
+    <View>
+      <Text>AppHeader</Text>
+    </View>
+  );
 }
 
 export default AppHeader;
