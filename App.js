@@ -4,7 +4,7 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import * as Icon from 'expo-vector-icons';
-import HomeScreen from './screens/HomeScreen';
+import AppNavigator from './navigation/AppNavigator';
 
 export default class App extends React.Component {
   state = {
@@ -50,7 +50,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <HomeScreen />
+        <AppNavigator />
       </View>
     );
   }

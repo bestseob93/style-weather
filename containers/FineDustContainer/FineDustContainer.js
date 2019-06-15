@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 function FineDustContainer() {
   return (
-    <View style={styles.fineDustContainer}>
+    <View style={styles.fineDustWrapper}>
       <Text style={styles.title}>미세먼지 나쁨!</Text>
       <Text style={styles.subtitle}>코로 숨을 못쉬어요</Text>
     </View>
@@ -11,7 +11,7 @@ function FineDustContainer() {
 }
 
 const styles = StyleSheet.create({
-  fineDustContainer: {
+  fineDustWrapper: {
     flex: 2,
     alignItems: 'flex-start',
     justifyContent: 'flex-end',

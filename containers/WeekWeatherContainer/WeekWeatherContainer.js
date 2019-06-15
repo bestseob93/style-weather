@@ -4,7 +4,7 @@ import { VictoryChart, VictoryLine, VictoryTheme } from 'victory-native';
 
 function WeekWeatherContainer() {
   return (
-    <ScrollView style={styles.weekWeatherContainer} horizontal>
+    <ScrollView style={styles.weekWeatherWrapper} horizontal>
       <VictoryChart theme={VictoryTheme.material}>
         <VictoryLine
           style={{
@@ -44,7 +44,7 @@ function WeekWeatherContainer() {
 }
 
 const styles = StyleSheet.create({
-  weekWeatherContainer: {
+  weekWeatherWrapper: {
     flex: 1,
   },
 });

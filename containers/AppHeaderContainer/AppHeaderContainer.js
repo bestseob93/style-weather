@@ -1,12 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 function AppHeader() {
   return (
-    <View>
-      <Text>AppHeader</Text>
+    <View style={styles.headerWrapper}>
+      <Text>성북구 성북동1가</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  headerWrapper: {
+    flex: 1,
+    alignItems: 'center',
+  },
+});
 
 export default AppHeader;

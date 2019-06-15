@@ -11,7 +11,6 @@ function ProductListContainer() {
     setDataSource(items);
   }, []);
 
-  console.log(dataSource);
   return (
     <View style={styles.productListWrapper}>
       <FlatList
