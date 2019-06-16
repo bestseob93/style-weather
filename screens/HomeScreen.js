@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  // Platform,
-  ScrollView,
-  StyleSheet,
-  // TouchableOpacity,
-  View,
-} from 'react-native';
+import PropTypes from 'prop-types';
+import { ScrollView, StyleSheet, View } from 'react-native';
 // import { WebBrowser } from 'expo';
 import AppHeaderContainer from '../containers/AppHeaderContainer/AppHeaderContainer';
 import ProductListContainer from '../containers/ProductListContainer/ProductListContainer';
@@ -22,14 +17,25 @@ export default class HomeScreen extends React.Component {
     },
   };
 
+  static propTypes = {
+    navigation: PropTypes.object,
+  };
+
+  static defaultProps = {
+    navigation: {},
+  };
+
   render() {
+    console.log('hi');
+    console.log(this.props);
+
     return (
       <ScrollView style={styles.container}>
         <TodayWeatherContainer />
         <WeekWeatherContainer />
         <FineDustContainer />
         <View>
-          <ProductListContainer />
+          <ProductListContainer navigation={this.props.navigation} />
         </View>
       </ScrollView>
     );

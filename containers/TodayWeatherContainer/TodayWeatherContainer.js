@@ -15,7 +15,7 @@ function TodayWeatherContainer() {
         </View>
       </View>
       <View style={styles.iconWrapper}>
-        <MaterialCommunityIcons size={74} name="weather-sunny" color="#fff" />
+        <MaterialCommunityIcons size={84} name="weather-sunny" color="#fff" />
       </View>
     </View>
   );

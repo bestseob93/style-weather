@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function ProductListContainer() {
+function ProductListContainer(props) {
   const [dataSource, setDataSource] = useState([]);
   useEffect(() => {
     const items = Array.apply(null, Array(60)).map((v, i) => ({
@@ -11,6 +12,8 @@ function ProductListContainer() {
     setDataSource(items);
   }, []);
 
+  console.log('ProductListContainer');
+  console.log(props);
   return (
     <View style={styles.productListWrapper}>
       <FlatList
@@ -23,13 +26,17 @@ function ProductListContainer() {
               margin: 1,
             }}
           >
-            <Image
-              style={styles.productThumbnail}
-              source={{
-                uri: item.src,
-              }}
-            />
-            <Text>{item.id}</Text>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate('Detail')}
+            >
+              <Image
+                style={styles.productThumbnail}
+                source={{
+                  uri: item.src,
+                }}
+              />
+              <Text>{item.id}</Text>
+            </TouchableOpacity>
           </View>
         )}
         numColumns={2}
